@@ -18,13 +18,13 @@ public class Synchronized_03 {
     }
 
     static class Main {
-        public  int i = 10000;
+        public int i = 10000;
 
         public synchronized void operationMain() {
             try {
                 i--;
                 System.out.println("main print i = " + i);
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -38,7 +38,7 @@ public class Synchronized_03 {
                 while (i > 0) {
                     i--;
                     System.out.println("sub print i = " + i);
-                    Thread.sleep(100);
+                    Thread.sleep(10);
                     this.operationMain();
                 }
             } catch (Exception e) {

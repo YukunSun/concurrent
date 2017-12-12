@@ -41,7 +41,7 @@ public class ReentrantLock_02 implements Runnable {
                 lock1.lockInterruptibly();
             }
         } catch (Exception e) {
-            // TODO: handle exception
+            e.printStackTrace();
         } finally {
             if (lock1.isHeldByCurrentThread()) {
                 lock1.unlock();
@@ -61,7 +61,7 @@ public class ReentrantLock_02 implements Runnable {
         thread1.start();
         thread2.start();
         Thread.sleep(1000);
-        //DeadlockChecker.check();
+        DeadlockChecker.check();
     }
 
     static class DeadlockChecker {
@@ -86,7 +86,7 @@ public class ReentrantLock_02 implements Runnable {
                     try {
                         Thread.sleep(5000);
                     } catch (Exception e) {
-                        // TODO: handle exception
+                        e.printStackTrace();
                     }
                 }
 

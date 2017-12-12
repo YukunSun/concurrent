@@ -9,7 +9,7 @@ package 线程基础;
 public class Synchronized_01 extends Thread {
     private int count = 10000;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Synchronized_01 th = new Synchronized_01();
         Thread t1 = new Thread(th, "t1-name");
         Thread t2 = new Thread(th, "t2-name");
