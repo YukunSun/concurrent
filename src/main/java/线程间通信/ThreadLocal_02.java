@@ -12,10 +12,10 @@ import java.util.concurrent.Executors;
  * @author SunYukun
  * @date 2017/7/8
  * <p>
- * 会报错，因为SimpleDateFormat.parse()是线程不安全的
+ * 使用ThreadLocal改写，其就相当于一个容器
  */
-public class ThreadLocal_01 {
-    static SimpleDateFormat format = new SimpleDateFormat("yyyy-M-dd HH:mm:ss");
+public class ThreadLocal_02 {
+    static ThreadLocal<SimpleDateFormat> t1 = new ThreadLocal<SimpleDateFormat>();
 
     static class ParseDate implements Runnable {
         int i = 0;
@@ -27,7 +27,10 @@ public class ThreadLocal_01 {
         @Override
         public void run() {
             try {
-                Date date = format.parse("2018-02-07 19:29:" + i % 60);
+                if (t1.get() == null) {
+                    t1.set(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+                }
+                Date date = t1.get().parse("2018-02-07 19:29:" + i % 60);
                 System.out.println(date);
             } catch (ParseException e) {
                 e.printStackTrace();

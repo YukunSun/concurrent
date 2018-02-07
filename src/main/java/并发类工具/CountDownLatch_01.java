@@ -29,6 +29,7 @@ public class CountDownLatch_01 implements Runnable {
         for (int i = 0; i < 10; i++) {
             executorService.execute(t);
         }
+//        等待其他10个线程
         countDownLatch.await();
         System.out.println("end");
         executorService.shutdown();
