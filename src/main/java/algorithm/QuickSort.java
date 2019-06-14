@@ -17,15 +17,18 @@ public class QuickSort {
     }
 
     private void quick_sort_recursive(int start, int end) {
-        if (start >= end)
+        if (start >= end) {
             return;
+        }
         int mid = arr[end];
         int left = start, right = end - 1;
         while (left < right) {
-            while (arr[left] < mid && left < right)
+            while (arr[left] < mid && left < right) {
                 left++;
-            while (arr[right] >= mid && left < right)
+            }
+            while (arr[right] >= mid && left < right) {
                 right--;
+            }
             swap(left, right);
         }
         if (arr[left] >= arr[end]) {
