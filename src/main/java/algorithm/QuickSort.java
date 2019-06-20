@@ -16,39 +16,39 @@ public class QuickSort {
         arr[y] = temp;
     }
 
-    private void quick_sort_recursive(int start, int end) {
+    private void quickSortRecursive(int start, int end) {
         if (start >= end) {
             return;
         }
-        int mid = arr[end];
-        int left = start, right = end - 1;
-        while (left < right) {
-            while (arr[left] < mid && left < right) {
-                left++;
+        int pivot = arr[end];
+        int i = start, j = end - 1;
+        while (i < j) {
+            while (arr[i] < pivot && i < j) {
+                i++;
             }
-            while (arr[right] >= mid && left < right) {
-                right--;
+            while (arr[j] >= pivot && i < j) {
+                j--;
             }
-            swap(left, right);
+            swap(i, j);
         }
-        if (arr[left] >= arr[end]) {
-            swap(left, end);
+        if (arr[i] >= arr[end]) {
+            swap(i, end);
         } else {
-            left++;
+            i++;
         }
-        quick_sort_recursive(start, left - 1);
-        quick_sort_recursive(left + 1, end);
+        quickSortRecursive(start, i - 1);
+        quickSortRecursive(i + 1, end);
     }
 
     public void sort(int[] arrin) {
         arr = arrin;
-        quick_sort_recursive(0, arr.length - 1);
-
+        quickSortRecursive(0, arr.length - 1);
     }
 
     public static void main(String[] args) {
 //        int[] arr = {1, 2, 5, 7, 8, 11, 12, 13};
-        int[] arr = {1, 2, 5, 7, 8, 11, 4, 10};
+//        int[] arr = {1, 2, 5, 7, 8, 11, 4, 10};
+        int[] arr = {11, 9, 5, 3, 8, 2, 4, 10};
         QuickSort quickSort = new QuickSort();
         quickSort.sort(arr);
         for (int i : arr) {

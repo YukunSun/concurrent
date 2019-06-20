@@ -27,7 +27,6 @@ public class SingletonTest_01 {
     }
 
     private static class InnerClass {
-        static final SingletonTest_01 single = new SingletonTest_01();
+       private static final SingletonTest_01 single = new SingletonTest_01();
     }
-
 }
