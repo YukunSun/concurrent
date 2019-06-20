@@ -9,7 +9,7 @@ import java.util.Stack;
  * Time: 2019-06-20 16:49
  * Blog: coderdaily.net
  * <p>
- * 用两个栈实现一个队列：只做一次性的操作，这是一个失败的题目
+ * 用两个栈实现一个队列：如果每次往栈中再放置一个元素，意味着 s2 得把所有的元素写回 s1 ，这是什么屁玩意儿题目，没意义
  */
 public class ImplementQueueWithStack {
     public static void main(String[] args) {
