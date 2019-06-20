@@ -9,7 +9,7 @@ import java.util.Stack;
  * Time: 2019-06-20 16:49
  * Blog: coderdaily.net
  * <p>
- * 用两个栈实现一个队列
+ * 用两个栈实现一个队列：只做一次性的操作，这是一个失败的题目
  */
 public class ImplementQueueWithStack {
     public static void main(String[] args) {
@@ -20,7 +20,6 @@ public class ImplementQueueWithStack {
         queue.add(2);
         queue.add(3);
         queue.add(4);
-        queue.add(5);
 
         //s1，用作入栈
         while (!queue.isEmpty()) {
