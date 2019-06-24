@@ -14,6 +14,7 @@ public class Child extends Father implements Runnable {
         }
     }
 
+    @Override
     public synchronized void doSomething() {
         System.out.println("1child.doSomething()");
         doAnotherThing(); // 调用自己类中其他的synchronized方法
@@ -24,6 +25,7 @@ public class Child extends Father implements Runnable {
         System.out.println("3child.doAnotherThing()");
     }
 
+    @Override
     public void run() {
         child.doSomething();
     }
