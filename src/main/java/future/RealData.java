@@ -18,7 +18,7 @@ public class RealData implements Data {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        param = new Random().nextInt(20) + "";
+        param = param + new Random().nextInt(20);
         this.result = param;
     }
 
