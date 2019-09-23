@@ -1,4 +1,4 @@
-package future;
+package 并发的设计模式.future;
 
 import java.util.Random;
 
