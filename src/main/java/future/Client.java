@@ -25,6 +25,6 @@ public class Client {
 
         Thread.sleep(5 * 1000);//模拟其他业务逻辑
 
-        System.out.println("真实的数据：" + data.getResult());//待真实数据差不多构造完毕时，才去获取数据
+        System.out.println("真实的数据：" + data.getResult());//待真实数据差不多构造完毕时，才去获取数据。输出示例：真实的数据：6
     }
 }
