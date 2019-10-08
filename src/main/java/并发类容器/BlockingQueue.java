@@ -1,4 +1,4 @@
-package 线程间通信;
+package 并发类容器;
 
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
