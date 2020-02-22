@@ -10,14 +10,22 @@ import org.junit.Test;
  * Blog: coderdaily.net
  */
 public class LinkedListTest {
+    SingleLinkedList linkedList;
+
     @Before
     public void constuctSingleLinkedList() {
-        SingleLinkedList linkedList = new SingleLinkedList(23).addHead(6).addHead(15);
+        linkedList = new SingleLinkedList(23).addHead(6).addHead(15);
         linkedList.printSingleLinkedList();
     }
 
-
+    /**
+     * 在指定位置插入结点
+     * <p>
+     * 比如插入9变成：15 -> 6 -> 23 ==》15 9 6 23
+     */
     @Test
-    public void insert() {
+    public void addTailTest() {
+        linkedList.addTail(3);
+        linkedList.printSingleLinkedList();
     }
 }
