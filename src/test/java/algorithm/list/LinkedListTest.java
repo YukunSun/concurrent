@@ -15,17 +15,36 @@ public class LinkedListTest {
     @Before
     public void constuctSingleLinkedList() {
         linkedList = new SingleLinkedList(23).addHead(6).addHead(15);
+    }
+
+    /**
+     * 构造链表
+     */
+    @Test
+    public void init() {
+        linkedList.printSingleLinkedList();
+    }
+
+    @Test
+    public void addTailTest() {
+        linkedList.addTail(3);
         linkedList.printSingleLinkedList();
     }
 
     /**
      * 在指定位置插入结点
      * <p>
-     * 比如插入9变成：15 -> 6 -> 23 ==》15 9 6 23
+     * 比如插入9变成：15 -> 6 -> 23 ==》15 6 9 23
      */
     @Test
-    public void addTailTest() {
-        linkedList.addTail(3);
+    public void addNoteAtSomePosition() {
+        SingleLinkedList p = linkedList;
+        while (p.value != 6) {
+            p = p.next;
+        }
+        SingleLinkedList cur = new SingleLinkedList(9);
+        cur.next = p.next;
+        p.next = cur;
         linkedList.printSingleLinkedList();
     }
 }
