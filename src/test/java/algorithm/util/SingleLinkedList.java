@@ -51,6 +51,9 @@ public class SingleLinkedList {
         return this;
     }
 
+    /**
+     * 打印链表
+     */
     public void printSingleLinkedList() {
         if (this == null) {
             System.out.println("list = []");
