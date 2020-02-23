@@ -47,4 +47,10 @@ public class LinkedListTest {
         p.next = cur;
         linkedList.printSingleLinkedList();
     }
+
+    @Test
+    public void delHead() {
+        SingleLinkedList deleted = linkedList.delHead();
+        deleted.printSingleLinkedList();
+    }
 }

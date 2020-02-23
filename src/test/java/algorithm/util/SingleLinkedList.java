@@ -52,6 +52,18 @@ public class SingleLinkedList {
     }
 
     /**
+     * 删除头结点
+     */
+    public SingleLinkedList delHead() {
+        if (this == null) {
+            return this;
+        }
+        SingleLinkedList head = this;
+        head = this.next;
+        return head;
+    }
+
+    /**
      * 打印链表
      */
     public void printSingleLinkedList() {
