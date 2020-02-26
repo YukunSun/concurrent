@@ -50,7 +50,12 @@ public class LinkedListTest {
 
     @Test
     public void delHead() {
-        SingleLinkedList deleted = linkedList.delHead();
+        SingleLinkedList deleted = linkedList.delTail();
         deleted.printSingleLinkedList();
+    }
+
+    @Test
+    public void delTail() {
+
     }
 }

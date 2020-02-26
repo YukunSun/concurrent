@@ -64,6 +64,26 @@ public class SingleLinkedList {
     }
 
     /**
+     * 删除最后一个结点
+     *
+     * @return
+     */
+    public SingleLinkedList delTail() {
+        if (this == null) {
+            return this;
+        }
+        SingleLinkedList head = this;
+        SingleLinkedList p = head;
+        SingleLinkedList p2 = p.next;
+        while (p2.next != null) {
+            p = p.next;
+            p2 = p2.next;
+        }
+        p.next = null;
+        return head;
+    }
+
+    /**
      * 打印链表
      */
     public void printSingleLinkedList() {
