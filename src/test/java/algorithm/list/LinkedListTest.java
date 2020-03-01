@@ -1,6 +1,6 @@
 package algorithm.list;
 
-import algorithm.util.SingleLinkedList;
+import algorithm.util.ListNode;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,11 +10,11 @@ import org.junit.Test;
  * Blog: coderdaily.net
  */
 public class LinkedListTest {
-    SingleLinkedList linkedList;
+    ListNode linkedList;
 
     @Before
     public void constuctSingleLinkedList() {
-        linkedList = new SingleLinkedList(23).addHead(6).addHead(15);
+        linkedList = new ListNode(23).addHead(6).addHead(15);
     }
 
     /**
@@ -38,11 +38,11 @@ public class LinkedListTest {
      */
     @Test
     public void addNoteAtSomePosition() {
-        SingleLinkedList p = linkedList;
+        ListNode p = linkedList;
         while (p.value != 6) {
             p = p.next;
         }
-        SingleLinkedList cur = new SingleLinkedList(9);
+        ListNode cur = new ListNode(9);
         cur.next = p.next;
         p.next = cur;
         linkedList.printSingleLinkedList();
@@ -50,7 +50,7 @@ public class LinkedListTest {
 
     @Test
     public void delHead() {
-        SingleLinkedList deleted = linkedList.delTail();
+        ListNode deleted = linkedList.delTail();
         deleted.printSingleLinkedList();
     }
 

@@ -7,23 +7,23 @@ package algorithm.util;
  * <p>
  * 单链表
  */
-public class SingleLinkedList {
+public class ListNode {
     public Integer value;
-    public SingleLinkedList next;
+    public ListNode next;
 
-    public SingleLinkedList(int value) {
+    public ListNode(int value) {
         this.value = value;
     }
 
     /**
      * 添加到头结点比添加到结尾更方便
      */
-    public SingleLinkedList addHead(Integer value) {
+    public ListNode addHead(Integer value) {
         if (value == null) {
             return this;
         }
-        SingleLinkedList head = this;
-        SingleLinkedList cur = new SingleLinkedList(value);
+        ListNode head = this;
+        ListNode cur = new ListNode(value);
         //core
         cur.next = head;
         head = cur;
@@ -34,17 +34,17 @@ public class SingleLinkedList {
     /**
      * 在结尾添加结点
      */
-    public SingleLinkedList addTail(Integer value) {
+    public ListNode addTail(Integer value) {
         if (value == null) {
             return this;
         }
         //指针 p 划到最后端才能添加
-        SingleLinkedList p = this;
+        ListNode p = this;
         //core
         while (p.next != null) {
             p = p.next;
         }
-        SingleLinkedList cur = new SingleLinkedList(value);
+        ListNode cur = new ListNode(value);
         p.next = cur;
         cur.next = null;
 
@@ -54,11 +54,11 @@ public class SingleLinkedList {
     /**
      * 删除头结点
      */
-    public SingleLinkedList delHead() {
+    public ListNode delHead() {
         if (this == null) {
             return this;
         }
-        SingleLinkedList head = this;
+        ListNode head = this;
         head = this.next;
         return head;
     }
@@ -68,13 +68,13 @@ public class SingleLinkedList {
      *
      * @return
      */
-    public SingleLinkedList delTail() {
+    public ListNode delTail() {
         if (this == null) {
             return this;
         }
-        SingleLinkedList head = this;
-        SingleLinkedList p = head;
-        SingleLinkedList p2 = p.next;
+        ListNode head = this;
+        ListNode p = head;
+        ListNode p2 = p.next;
         while (p2.next != null) {
             p = p.next;
             p2 = p2.next;
@@ -90,7 +90,7 @@ public class SingleLinkedList {
         if (this == null) {
             System.out.println("list = []");
         }
-        SingleLinkedList p = this;
+        ListNode p = this;
         while (p != null) {
             System.out.print(p.value + " -> ");
             p = p.next;
