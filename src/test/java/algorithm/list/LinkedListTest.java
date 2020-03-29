@@ -1,6 +1,7 @@
 package algorithm.list;
 
 import algorithm.util.ListNode;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,5 +58,45 @@ public class LinkedListTest {
     @Test
     public void delTail() {
 
+    }
+
+    /**
+     * https://leetcode-cn.com/problems/palindrome-linked-list/comments/
+     */
+    @Test
+    public void isPalindromeTest() {
+        linkedList = new ListNode(0).addHead(0).addHead(1);
+        Assert.assertEquals(isPalindrome(linkedList), false);
+    }
+
+    public boolean isPalindrome(ListNode head) {
+        if (head == null || head.next == null) {
+            return true;
+        }
+        //找出中间结点:快慢指针起点相同
+        ListNode pre = null;
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        //翻转后半部分
+        while (slow != null) {
+            ListNode next = slow.next;
+            slow.next = pre;
+            pre = slow;
+            slow = next;
+        }
+
+        //判断两个部分的链表
+        while (pre != null && head != null) {
+            if (pre.value != head.value) {
+                return false;
+            }
+            pre = pre.next;
+            head = head.next;
+        }
+        return true;
     }
 }
