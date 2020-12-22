@@ -42,6 +42,9 @@ public class TryLockTest {
     }
 }
 
+/**
+ * lock free
+ */
 class TryLock {
     private final AtomicBoolean lock = new AtomicBoolean(false);
     private final ThreadLocal<Boolean> threadLocal = ThreadLocal.withInitial(() -> false);
