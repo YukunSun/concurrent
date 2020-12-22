@@ -18,8 +18,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * Time: 2020/12/21 22:31
  * Blog: bengle.me
  */
-@Measurement(iterations = 10)
-@Warmup(iterations = 10)
+@Measurement(iterations = 3)
+@Warmup(iterations = 2)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class AtomicIntegerVsSynchronizedVsLock {
