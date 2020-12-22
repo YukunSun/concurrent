@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  **/
 public class TryLockTest {
     private static final Object VALUE = new Object();
-    private static final List<Object> list = new ArrayList<>();
+    private static final List<Object> VALIDATE = new ArrayList<>();
     final static TryLock lock = new TryLock();
 
     public static void main(String[] args) {
@@ -20,10 +20,10 @@ public class TryLockTest {
                     try {
                         if (lock.tryLock()) {
                             System.out.println(Thread.currentThread() + ":get the lock");
-                            if (list.size() > 1) {
+                            if (VALIDATE.size() > 1) {
                                 throw new IllegalStateException();
                             }
-                            list.add(VALUE);
+                            VALIDATE.add(VALUE);
                             TimeUnit.MILLISECONDS.sleep(100);
                         } else {
                             TimeUnit.MILLISECONDS.sleep(100);
@@ -33,7 +33,7 @@ public class TryLockTest {
                     } finally {
                         if (lock.release()) {
                             System.out.println(Thread.currentThread() + ":release the lock");
-                            list.remove(VALUE);
+                            VALIDATE.remove(VALUE);
                         }
                     }
                 }
