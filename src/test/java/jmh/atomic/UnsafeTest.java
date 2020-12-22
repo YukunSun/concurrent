@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import sun.misc.Unsafe;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
@@ -58,8 +61,20 @@ public class UnsafeTest {
      * Unsafe 3：类的加载
      */
     @Test
-    public void classLoad() {
+    public void classLoad() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        byte[] content = loadClassFile();
+        Class c = getUnsafe().defineAnonymousClass(Example.class, content, null);
+        Object result = c.getMethod("getI").invoke(c.getDeclaredConstructor().newInstance(), null);
+        Assert.assertEquals(10, result);
+    }
 
+    private static byte[] loadClassFile() throws IOException {
+        File file = new File("/Users/sunyk/Documents/ideaworks/concurrent/src/test/java/jmh/atomic/Example.class");
+        try (FileInputStream input = new FileInputStream(file)) {
+            byte[] content = new byte[(int) file.length()];
+            input.read(content);
+            return content;
+        }
     }
 
     /**
