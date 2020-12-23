@@ -49,6 +49,7 @@ public class UnsafeTest {
         Example example = new Example();
         Assert.assertEquals(10, example.getI());
 
+//        Unsafe unsafe = Unsafe.getUnsafe();
         Unsafe unsafe = getUnsafe();
         Field field = example.getClass().getDeclaredField("i");
         //可以直接获取该字段的内存偏移量，并修改其值
