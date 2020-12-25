@@ -1,12 +1,17 @@
 package jmh.stream;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -48,5 +53,20 @@ public class StreamTest {
         Stream<Stream<Integer>> s = Stream.of(1, 2, 3, 5).map(i -> Stream.of(2 * i));
         s.map(m -> m.map(i -> i * 10))
                 .forEach(i -> i.forEach(ii -> System.out.println(ii)));
+    }
+
+    @Test
+    public void terminateOps() {
+        Assert.assertEquals(IntStream.range(1, 10).allMatch(i -> i > 0), true);
+
+        List<String> words = Arrays.asList("Scala", "Java", "Stream", "Java", "Alex", "Scala", "Scala");
+        // 根据words创建一个Stream
+        Map<String, Long> count = words.stream()
+                // 执行collect操作
+                .collect(
+                        // 进行分组操作
+                        Collectors.groupingBy(Function.identity(), Collectors.counting())
+                );
+        System.out.println(count);
     }
 }
