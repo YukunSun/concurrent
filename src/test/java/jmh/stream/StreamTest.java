@@ -69,4 +69,11 @@ public class StreamTest {
                 );
         System.out.println(count);
     }
+
+    @Test
+    public void name() {
+        Integer sum = Stream.of(1, 2, 3, 4, 5).reduce(0, Integer::sum);
+        Integer sum2 = Stream.of(1, 2, 3, 4, 5).reduce(0, (a, b) -> a + b);
+        System.out.println(sum);
+    }
 }
