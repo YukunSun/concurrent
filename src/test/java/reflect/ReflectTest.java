@@ -13,12 +13,28 @@ import java.lang.reflect.Modifier;
  * @author sunyk
  **/
 public class ReflectTest {
+
     @Test
     public void reflectDemo() throws ClassNotFoundException, NoSuchMethodException {
+        Class c3 = Thread.class;
 //        1 get methods
-        Method[] methods = ReflectTest.class.getDeclaredMethods();
+        Method[] methods = c3.getDeclaredMethods();
         for (Method method : methods) {
+            //可以获取到private方法
             System.out.println(method);
+        }
+        //获取方法对象
+        Method methodRun = c3.getMethod("run", null);
+        Assert.assertEquals("public void java.lang.Thread.run()", methodRun.toString());
+        //获取返回值、参数
+        Assert.assertEquals("void", methodRun.getReturnType().toString());
+        Assert.assertEquals(0, methodRun.getParameterCount());
+        //通过method对象调用方法
+        try {
+            Object returnValue = methodRun.invoke(new Thread(), null);//只是举例而已,如果是一个静态方法调用的话则可以用null代替指定对象作为invoke()的参数
+            Assert.assertEquals(null, returnValue);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 //       2 get Class
@@ -38,7 +54,6 @@ public class ReflectTest {
 //        6 super class
         Assert.assertEquals(Object.class, c.getSuperclass());
 //        7 implemented interfaces
-        Class c3 = Thread.class;
         for (Class itf : c3.getInterfaces()) {
             System.out.println(itf);
         }
