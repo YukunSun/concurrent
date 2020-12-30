@@ -62,11 +62,17 @@ public class ReflectTest {
             System.out.println(f);
         }
         try {
+            //获取字段类型
             Field interrupted = c3.getField("MAX_PRIORITY");
             Assert.assertEquals(int.class, interrupted.getType());
-        } catch (NoSuchFieldException e) {
+            //通过反射修改字段值
+            Thread newObj = new Thread();
+            Object obj = interrupted.get(newObj);
+//            interrupted.set(obj, 10000);//Can not set static final int field java.lang.Thread.MAX_PRIORITY to java.lang.Integer，要不是 final 的就改成功了，懒得换case了
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
 //        10 annotations
         for (Annotation annotation : Runnable.class.getAnnotations()) {
             System.out.println(annotation);
