@@ -58,7 +58,14 @@ public class ReflectTest {
         }
 //        9 fields
         for (Field f : c3.getFields()) {
+            //获取不到 private 字段
             System.out.println(f);
+        }
+        try {
+            Field interrupted = c3.getField("MAX_PRIORITY");
+            Assert.assertEquals(int.class, interrupted.getType());
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
         }
 //        10 annotations
         for (Annotation annotation : Runnable.class.getAnnotations()) {
