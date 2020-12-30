@@ -75,5 +75,8 @@ public class StreamTest {
         Integer sum = Stream.of(1, 2, 3, 4, 5).reduce(0, Integer::sum);
         Integer sum2 = Stream.of(1, 2, 3, 4, 5).reduce(0, (a, b) -> a + b);
         System.out.println(sum);
+
+        Stream stream = Stream.of(1, 2, "3");
+        stream.collect(Collectors.toSet());
     }
 }
