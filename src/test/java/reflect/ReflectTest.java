@@ -73,17 +73,24 @@ public class ReflectTest {
         }
 //        9 fields
         for (Field f : c3.getFields()) {
-            //获取不到 private 字段
+            //Class.getField(String name)和Class.getFields()只会返回公有的变量，无法获取私有变量,要想获取私有变量你可以调用Class.getDeclaredField(String name)方法或者Class.getDeclaredFields()方法
             System.out.println(f);
         }
+        for (Field f : c3.getDeclaredFields()) {//获取private field演示
+            System.out.println(f);
+        }
+
         try {
             //获取字段类型
-            Field interrupted = c3.getField("MAX_PRIORITY");
-            Assert.assertEquals(int.class, interrupted.getType());
+//            Field threadStatus = c3.getField("threadStatus");
+            Field threadStatus = c3.getDeclaredField("daemon");
+//            Assert.assertEquals(int.class, threadStatus.getType());
             //通过反射修改字段值
             Thread newObj = new Thread();
-            Object obj = interrupted.get(newObj);
-//            interrupted.set(obj, 10000);//Can not set static final int field java.lang.Thread.MAX_PRIORITY to java.lang.Integer，要不是 final 的就改成功了，懒得换case了
+            threadStatus.setAccessible(true);//同样的，注意Method.setAcessible(true)这行代码，通过调用setAccessible()方法会关闭指定类的Method实例的反射访问检查，这行代码执行之后不论是私有的、受保护的以及包访问的作用域，你都可以在任何地方访问，即使你不在他的访问权限作用域之内。但是你如果你用一般代码来访问这些不在你权限作用域之内的代码依然是不可以的，在编译的时候就会报错。
+            Object obj = threadStatus.get(newObj);
+//            threadStatus.set(obj, false);
+            threadStatus.setBoolean(obj, false);//java.lang.IllegalArgumentException: Can not set boolean field java.lang.Thread.daemon to java.lang.Boolean
         } catch (Exception e) {
             e.printStackTrace();
         }
