@@ -89,8 +89,8 @@ public class ReflectTest {
             Thread newObj = new Thread();
             threadStatus.setAccessible(true);//同样的，注意Method.setAcessible(true)这行代码，通过调用setAccessible()方法会关闭指定类的Method实例的反射访问检查，这行代码执行之后不论是私有的、受保护的以及包访问的作用域，你都可以在任何地方访问，即使你不在他的访问权限作用域之内。但是你如果你用一般代码来访问这些不在你权限作用域之内的代码依然是不可以的，在编译的时候就会报错。
             Object obj = threadStatus.get(newObj);
-//            threadStatus.set(obj, false);
-            threadStatus.setBoolean(obj, false);//java.lang.IllegalArgumentException: Can not set boolean field java.lang.Thread.daemon to java.lang.Boolean
+//            threadStatus.set(obj, false);//java.lang.IllegalArgumentException: Can not set boolean field java.lang.Thread.daemon to java.lang.Boolean
+//            threadStatus.setBoolean(obj, false);
         } catch (Exception e) {
             e.printStackTrace();
         }
