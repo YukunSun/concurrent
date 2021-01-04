@@ -32,9 +32,13 @@ public class DynamicProxy implements InvocationHandler {
     public Object bind(Object real) {
         this.real = real;
         //利用JDK提供的Proxy实现动态代理
+        //1、类加载器（ClassLoader）用来加载动态代理类。
+        //2、一个要实现的接口的数组。
+        //3、一个InvocationHandler把所有方法的调用都转到代理上。
         return Proxy.newProxyInstance(target.getClassLoader(), new Class[]{target}, this);
     }
 
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("start......");
 //        实际执行的方法
