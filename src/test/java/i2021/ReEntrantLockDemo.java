@@ -56,6 +56,6 @@ public class ReEntrantLockDemo {
     public static void main(String[] args) {
 //        func();
 //        f1();
-        func5();//lock,unlock需要成对出现，否则t2可能获取不了锁.
+        func5();//lock,unlock需要成对出现，否则其他线程可能获取不了锁.
     }
 }
