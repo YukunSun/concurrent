@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  * Time: 2021/3/8 15:08
  * Blog: bengle.me
  * <p>
- * 使用 wait/notify 来做线程间通信。可能会有xx问题 -》证明了为什么需要有LockSupport
+ * 使用 wait/notify 来做线程间通信。可能会有2个问题 -》证明了为什么需要有LockSupport
  */
 public class LockSupport1 {
     static Object lock = new Object();
