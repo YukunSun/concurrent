@@ -6,6 +6,7 @@ import sun.misc.VM;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: sun.yukun@foxmail.com
@@ -66,7 +67,16 @@ public class OOMDemo {
      */
     @Test
     public void unableToCreateNativeThread() {
-
+        for (int i = 0; ; i++) {
+            System.out.println("i = " + i);
+            new Thread(() -> {//创建线程，并且一直不退出
+                try {
+                    TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }, String.valueOf(i)).start();
+        }
     }
 
     /**
