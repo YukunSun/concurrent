@@ -1,6 +1,11 @@
 package i2021;
 
 import org.junit.Test;
+import sun.misc.VM;
+
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: sun.yukun@foxmail.com
@@ -27,10 +32,33 @@ public class OOMDemo {
         byte[] bytes = new byte[20 * 1024 * 1024];
     }
 
+    /**
+     * -XX:+PrintGCDetails -XX:MaxDirectMemorySize=5m
+     */
     @Test
     public void OOMOfDirectMemory() {
-        //maxDirectMemory
-        //不用copy
+        long maxDirectMemory = VM.maxDirectMemory();//默认大概为内存的1/4
+        System.out.println("maxDirectMemory(Mb) = " + maxDirectMemory / 1024 / 1024);
+
+        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(10 * 1024 * 1024);
+    }
+
+    /**
+     * -Xmx10m -Xms10m -XX:+PrintGCDetails -XX:MaxDirectMemorySize=5m
+     */
+    @Test
+    public void gcOverheadLimitExceeded() {
+        int i = 0;
+        List<String> list = new ArrayList<>();
+        try {
+            while (true) {
+                list.add(String.valueOf(++i).intern());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("i = " + i);
+        }
     }
 
     /**
