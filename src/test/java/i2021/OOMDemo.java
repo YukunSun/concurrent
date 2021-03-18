@@ -1,5 +1,7 @@
 package i2021;
 
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
 import org.junit.Test;
 import sun.misc.VM;
 
@@ -45,7 +47,7 @@ public class OOMDemo {
     }
 
     /**
-     * -Xmx10m -Xms10m -XX:+PrintGCDetails -XX:MaxDirectMemorySize=5m
+     * -Xmx10m -Xms10m -XX:+PrintGCDetails
      */
     @Test
     public void gcOverheadLimitExceeded() {
@@ -81,9 +83,17 @@ public class OOMDemo {
 
     /**
      * 元空间用的也是本地内存，并没有用虚拟机内存
+     * <p>
+     * -XX:+PrintGCDetails -XX:MaxMetaspaceSize=10M -XX:MetaspaceSize=5M
      */
     @Test
-    public void MetaSpace() {
-
+    public void oomOfMetaSpace() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        while (true) {
+            Enhancer enhancer = new Enhancer();
+            enhancer.setSuperclass(OOMDemo.class);
+            enhancer.setUseCache(false);
+            enhancer.setCallback((MethodInterceptor) (o, method, objects, methodProxy) -> methodProxy.invokeSuper(o, objects));
+            enhancer.create();
+        }
     }
 }
