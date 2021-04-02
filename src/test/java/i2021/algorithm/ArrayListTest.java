@@ -35,9 +35,11 @@ public class ArrayListTest {
         });
         System.out.println("list = " + list);
         List<Integer> subList = list.subList(0, 3);
-        //1.取了subList之后，如果添加或移除会报:java.util.ConcurrentModificationException
-        list.add(1);
+        //1.取了subList之后，如果添加或移除（因为改变了结构）会报:java.util.ConcurrentModificationException
+//        list.add(1);
 //        list.remove(1);
+        //1.2 但是对于不改变结构的操作不会导致报错，不改变结构就是不改变size，有个参数modCount来统计
+        list.set(8, -9);
         System.out.println("subList = " + subList);
         //2.修改subList不会导致报错，但会影响原列表的元素
         subList.add(-1);
