@@ -16,4 +16,16 @@ public class TrickDemo {
         Assert.assertEquals(0, 4 & 3);
         Assert.assertEquals(0, 32 & 31);
     }
+
+    @Test
+    public void xor() {
+        Assert.assertEquals(10, 10);
+        Assert.assertEquals(8, 010);
+        Assert.assertEquals(16, 0x10);
+
+        int a = 0x10000;
+        System.out.println("a = " + a);
+        int result = a ^ (a >>> 16);
+        System.out.println("result = " + result);
+    }
 }
