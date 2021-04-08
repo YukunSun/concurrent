@@ -28,4 +28,16 @@ public class TrickDemo {
         int result = a ^ (a >>> 16);
         System.out.println("result = " + result);
     }
+
+    @Test
+    public void count1ForBinary() {
+        int k = 7;//3:11,4:100,7:111
+
+        int countOf1 = 0;
+        while (k != 0) {
+            k = k & (k - 1);
+            countOf1++;
+        }
+        System.out.println("countOf1 = " + countOf1);
+    }
 }
