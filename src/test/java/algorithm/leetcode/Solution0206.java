@@ -11,7 +11,7 @@ import org.junit.Test;
  * <p>
  * https://leetcode-cn.com/problems/reverse-linked-list/
  */
-public class Solution206 {
+public class Solution0206 {
     static ListNode list = new ListNode(1);
 
     @BeforeClass
