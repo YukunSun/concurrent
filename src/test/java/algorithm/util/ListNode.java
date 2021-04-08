@@ -95,5 +95,6 @@ public class ListNode {
             System.out.print(p.value + " -> ");
             p = p.next;
         }
+        System.out.println("\n");
     }
 }
