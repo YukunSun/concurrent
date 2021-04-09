@@ -43,6 +43,7 @@ public class Solution0002 {
         ListNode p2 = l2;
         int tmp = 0;//用于存储想加的临时值
         while (p1 != null || p2 != null) {
+            //第一个三目运算符需要加括号...好坑
             tmp += (p1 == null ? 0 : p1.value) + (p2 == null ? 0 : p2.value);
             p.next = new ListNode(tmp % 10);//当前值
             if (p1 != null) {
@@ -58,5 +59,15 @@ public class Solution0002 {
             p.next = new ListNode(1);
         }
         return dummy.next;
+    }
+
+    @Test
+    public void debug() {
+        int tmp = 0;
+        int a = 0;
+        int b = 1;
+        tmp += a == 0 ? 0 : 1 + b == 0 ? 0 : 1;//tmp=0
+//        tmp += (a == 0 ? 0 : 1) + b == 0 ? 0 : 1;//tmp=1
+        System.out.println("tmp = " + tmp);
     }
 }
