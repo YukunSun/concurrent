@@ -1,4 +1,4 @@
-package algorithm.list;
+package algorithm.leetcode;
 
 import org.junit.Before;
 import org.junit.Test;
