@@ -40,4 +40,18 @@ public class TrickDemo {
         }
         System.out.println("countOf1 = " + countOf1);
     }
+
+    @Test
+    public void count1ForBinary2() {
+        int k = 4;
+        int countOf1 = 0;
+        while (k >= 1) {
+            int a = k % 2;
+            if (a == 1) {
+                countOf1++;
+            }
+            k /= 2;
+        }
+        System.out.println(countOf1);
+    }
 }
