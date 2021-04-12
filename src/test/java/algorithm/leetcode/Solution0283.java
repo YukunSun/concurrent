@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class Solution0283 {
     @Test
-    public void name() {
+    public void o1() {
         int[] nums = {0, 1, 0, 3, 12};
 //        int[] nums = {4, 2, 4, 0, 0, 3, 0, 5, 1, 0};
         moveZeroes(nums);
