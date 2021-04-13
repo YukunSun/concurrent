@@ -45,4 +45,27 @@ public class Solution0283 {
             }
         }
     }
+
+    @Test
+    public void o12() {
+//        int[] nums = {0, 1, 0, 3, 12};
+        int[] nums = {4, 2, 4, 0, 0, 3, 0, 5, 1, 0};
+        moveZeroes2(nums);
+        for (int i = 0; i < nums.length; i++) {
+            System.out.println(nums[i]);
+        }
+    }
+
+    public void moveZeroes2(int[] nums) {
+        int i = 0, j = 0, n = nums.length;
+        while (j < n) {
+            if (nums[j] != 0) {//只要nums[j]!=0就调换，根本不用管nums[i]
+                int tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
+                i++;
+            }
+            j++;
+        }
+    }
 }
