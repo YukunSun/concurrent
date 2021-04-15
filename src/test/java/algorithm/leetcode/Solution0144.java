@@ -17,11 +17,11 @@ import java.util.Stack;
  * 145:https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
  */
 public class Solution0144 {
-    static TreeNode node = new TreeNode(1, null, new TreeNode(2));
+    static TreeNode nodeDemo = new TreeNode(1, null, new TreeNode(2));
 
     @BeforeClass
     public static void beforeClass() throws Exception {
-        node.right.left = new TreeNode(3);
+        nodeDemo.right.left = new TreeNode(3);
     }
 
     /**
@@ -29,12 +29,11 @@ public class Solution0144 {
      */
     @Test
     public void preTest2() {
-        List<Integer> list = preorderTraversal2(node);
+        List<Integer> list = preorderTraversal2(nodeDemo);
         System.out.println(list);
     }
 
     public List<Integer> preorderTraversal2(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
         if (root == null) {
             return list;
         }
@@ -55,7 +54,7 @@ public class Solution0144 {
 
     @Test
     public void preTest() {
-        List<Integer> list = preorderTraversal(node);
+        List<Integer> list = preorderTraversal(nodeDemo);
         System.out.println(list);
     }
 
@@ -84,7 +83,7 @@ public class Solution0144 {
      */
     @Test
     public void preInPost2Test() {
-        List<Integer> list = preInPostorderTraversal2(node);
+        List<Integer> list = preInPostorderTraversal2(nodeDemo);
         System.out.println(list);
     }
 
@@ -118,7 +117,7 @@ public class Solution0144 {
      */
     @Test
     public void preInPostTest() {
-        preInPostorderTraversal(node);
+        preInPostorderTraversal(nodeDemo);
     }
 
     /**
