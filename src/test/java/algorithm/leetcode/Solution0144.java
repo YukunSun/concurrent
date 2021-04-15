@@ -13,8 +13,8 @@ import java.util.Stack;
  * Time: 2021/4/14 21:59
  * Blog: bengle.me
  * <p>
- * https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
- * https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
+ * 144:https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
+ * 145:https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
  */
 public class Solution0144 {
     static TreeNode node = new TreeNode(1, null, new TreeNode(2));
@@ -22,6 +22,35 @@ public class Solution0144 {
     @BeforeClass
     public static void beforeClass() throws Exception {
         node.right.left = new TreeNode(3);
+    }
+
+    /**
+     * 前序遍历，非递归，更容易理解，https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/leetcodesuan-fa-xiu-lian-dong-hua-yan-shi-xbian-2/
+     */
+    @Test
+    public void preTest2() {
+        List<Integer> list = preorderTraversal2(node);
+        System.out.println(list);
+    }
+
+    public List<Integer> preorderTraversal2(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            list.add(node.val);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+        return list;
     }
 
     @Test
