@@ -17,11 +17,20 @@ import java.util.Stack;
  * 145:https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
  */
 public class Solution0144 {
-    static TreeNode nodeDemo = new TreeNode(1, null, new TreeNode(2));
+    //    static TreeNode nodeDemo = new TreeNode(1, null, new TreeNode(2));
+//
+//    @BeforeClass
+//    public static void beforeClass() throws Exception {
+//        nodeDemo.right.left = new TreeNode(3);
+//    }
+    static TreeNode nodeDemo = new TreeNode(1, new TreeNode(2), new TreeNode(3));
 
     @BeforeClass
     public static void beforeClass() throws Exception {
-        nodeDemo.right.left = new TreeNode(3);
+        nodeDemo.left.left = new TreeNode(4);
+        nodeDemo.right.left = new TreeNode(5);
+        nodeDemo.right.right = new TreeNode(6);
+        nodeDemo.right.right.left = new TreeNode(7);
     }
 
     /**
