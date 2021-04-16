@@ -41,6 +41,7 @@ public class Solution0145 {
      *
      * @param root
      * @return
+     * @see Solution0144#preorderTraversal2(algorithm.util.TreeNode)
      */
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();

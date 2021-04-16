@@ -42,6 +42,11 @@ public class Solution0144 {
         System.out.println(list);
     }
 
+    /**
+     * @param root
+     * @return
+     * @see Solution0145#postorderTraversal(algorithm.util.TreeNode) 一定要对照着看
+     */
     public List<Integer> preorderTraversal2(TreeNode root) {
         if (root == null) {
             return list;
