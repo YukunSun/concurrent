@@ -41,6 +41,6 @@ public class Solution9001 {
         if (!hasFound) {
             return new int[]{-1, -1};
         }
-        return new int[]{i, j - 1};
+        return new int[]{i, j - 1};//i正好是下标，j正好是上标+1
     }
 }
