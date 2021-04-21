@@ -83,7 +83,7 @@ public class Solution9003 {
      * @param start
      * @param end
      */
-    private void quickSort2(int[] nums, int start, int end) {
+    protected void quickSort2(int[] nums, int start, int end) {
         if (start >= end) {
             return;
         }
