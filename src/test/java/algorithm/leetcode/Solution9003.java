@@ -106,7 +106,7 @@ public class Solution9003 {
             }
         }
         nums[i] = pivot;//这个时候需要拿pivot填平缺省值
-        quickSort(nums, start, i - 1);
-        quickSort(nums, i + 1, end);
+        quickSort2(nums, start, i - 1);
+        quickSort2(nums, i + 1, end);
     }
 }
