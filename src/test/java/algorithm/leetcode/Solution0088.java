@@ -3,6 +3,8 @@ package algorithm.leetcode;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * @author: sun.yukun@foxmail.com
  * Time: 2021/4/24 18:32
@@ -136,5 +138,57 @@ public class Solution0088 {
     @Test
     public void mergeTest3() {
         //nums2全部复制到nums1里，然后再排序。这个操作有点骚...，略
+    }
+
+    @Test
+    public void mergeTest4() {
+        merge4(new int[]{1, 3, 5}, new int[]{2, 4, 6});
+        merge4(new int[]{1, 3, 5}, new int[]{2});
+        merge4(new int[]{1, 3, 5}, new int[]{});
+        merge4(new int[]{1, 3}, new int[]{2, 4, 6});
+        merge4(new int[]{}, new int[]{2, 4, 6});
+    }
+
+    /**
+     * 其他idea：如果直接申请一个m+n的空间逐个放置就ok了
+     *
+     * @param nums1
+     * @param nums2
+     */
+    private void merge4(int[] nums1, int[] nums2) {
+        int length1 = nums1.length;
+        int length2 = nums2.length;
+
+        int[] result = new int[length1 + length2];
+        int i = 0, j = 0;
+        int p = 0;
+        while (i < length1 || j < length2) {
+            if (i > length1 - 1) {
+                while (j < length2) {
+                    result[p] = nums2[j];
+                    p++;
+                    j++;
+                }
+                break;
+            }
+            if (j > length2 - 1) {
+                while (i < length1) {
+                    result[p] = nums1[i];
+                    p++;
+                    i++;
+                }
+                break;
+            }
+            if (nums1[i] >= nums2[j]) {
+                result[p] = nums2[j];
+                p++;
+                j++;
+            } else {
+                result[p] = nums1[i];
+                p++;
+                i++;
+            }
+        }
+        System.out.println(Arrays.toString(result));
     }
 }
