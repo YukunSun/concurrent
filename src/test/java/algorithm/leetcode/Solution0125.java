@@ -31,8 +31,8 @@ public class Solution0125 {
             while (i <= j && !Character.isLetterOrDigit(arr[j])) {
                 j--;
             }
-            if (i <= j) {
-                if (Character.toLowerCase(arr[i]) != Character.toLowerCase(arr[j])) {
+            if (i <= j) {//主要是这个范围
+                if (Character.toLowerCase(arr[i]) != Character.toLowerCase(arr[j])) {//还有这个API
                     return false;
                 }
                 i++;
