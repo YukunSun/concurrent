@@ -45,7 +45,7 @@ public class Solution0011 {
     }
 
     /**
-     * 还是双指针
+     * 还是双指针，动态规划，时：O(N)
      *
      * @param height
      * @return
