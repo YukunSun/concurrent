@@ -88,4 +88,43 @@ public class Solution0101 {
         }
         return true;
     }
+
+    @Test
+    public void symmetric3Test() {
+        Assert.assertEquals(isSymmetric3(nodeDemo), false);
+    }
+
+    /**
+     * BETTER：可以使用一个栈（官方用的是一个队列），而且不用存储null
+     *
+     * @param root
+     * @return
+     */
+    private boolean isSymmetric3(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        return isSymmetric3Helper(root, root);
+    }
+
+    private boolean isSymmetric3Helper(TreeNode u, TreeNode v) {
+        Stack<TreeNode> s1 = new Stack<>();
+        s1.push(u);
+        s1.push(v);
+        while (!s1.isEmpty()) {
+            TreeNode node1 = s1.pop();
+            TreeNode node2 = s1.pop();
+            if (node1 == null && node2 == null) {
+                continue;
+            }
+            if (node1 == null || node2 == null || node1.val != node2.val) {
+                return false;
+            }
+            s1.push(node1.left);
+            s1.push(node2.right);
+            s1.push(node1.right);
+            s1.push(node2.left);
+        }
+        return true;
+    }
 }
