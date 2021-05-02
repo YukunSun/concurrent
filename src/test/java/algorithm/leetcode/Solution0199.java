@@ -63,7 +63,7 @@ public class Solution0199 {
      */
     @Test
     public void rightView2Test() {
-        List<Integer> result = printRight2(nodeDemo);
+        List<Integer> result = rightSideView(nodeDemo);
         System.out.println(result);
     }
 
@@ -74,7 +74,7 @@ public class Solution0199 {
      *
      * @param root
      */
-    public List<Integer> printRight2(TreeNode root) {
+    public List<Integer> rightSideView(TreeNode root) {
         dfs(root, 0);
         return result;
     }
