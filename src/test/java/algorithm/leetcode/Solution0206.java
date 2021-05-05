@@ -31,6 +31,12 @@ public class Solution0206 {
         result.printSingleLinkedList();
     }
 
+    /**
+     * 迭代方式
+     *
+     * @param head
+     * @return
+     */
     public ListNode reverseList(ListNode head) {
         //1 边界
         if (head == null || head.next == null) {
@@ -48,6 +54,25 @@ public class Solution0206 {
 
     @Test
     public void on() {
+        System.out.println("result:");
+        ListNode result = reverseList2(list);
+        result.printSingleLinkedList();
+    }
 
+    /**
+     * 递归方式
+     *
+     * @param head
+     * @return
+     */
+    public ListNode reverseList2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode second = head.next;//second 正好是尾节点的前一个节点，因为如果是尾节点的话是到不了这里的（直接返回了）
+        ListNode reverse = reverseList2(second);
+        second.next = head;
+        head.next = null;
+        return reverse;
     }
 }
