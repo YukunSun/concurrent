@@ -18,6 +18,13 @@ public class Solution0167 {
         Assert.assertArrayEquals(twoSum(new int[]{2, 7, 11, 15}, 9), new int[]{1, 2});
     }
 
+    /**
+     * 先用hash表存起来所有元素，然后再获取，空：O(logN)
+     *
+     * @param numbers
+     * @param target
+     * @return
+     */
     private int[] twoSum(int[] numbers, int target) {
         HashMap<Integer, Integer> hash = new HashMap<>();
 
