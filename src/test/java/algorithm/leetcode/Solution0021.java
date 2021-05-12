@@ -13,13 +13,13 @@ import org.junit.Test;
  */
 public class Solution0021 {
     static ListNode list = new ListNode(1);
-    static ListNode list2 = new ListNode(1);
+    static ListNode list2 = new ListNode(2);
 
     @BeforeClass
     public static void beforeClass() throws Exception {
-        list2.addTail(2);
         list.addTail(3);
         list2.addTail(4);
+        list2.addTail(6);
         list.addTail(5);
         System.out.println("original list:");
         list.printSingleLinkedList();
@@ -67,5 +67,31 @@ public class Solution0021 {
             }
         }
         return dummy.next;
+    }
+
+    @Test
+    public void OnO1() {
+        ListNode result = mergeTwoLists2(list, list2);
+        result.printSingleLinkedList();
+    }
+
+    /**
+     * 递归解法，https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/¬
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+        if (l1 == null || l2 == null) {
+            return l1 == null ? l2 : l1;
+        }
+        if (l1.value < l2.value) {
+            l1.next = mergeTwoLists2(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists2(l1, l2.next);
+            return l2;
+        }
     }
 }
