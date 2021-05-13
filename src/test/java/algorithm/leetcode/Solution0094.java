@@ -16,12 +16,14 @@ import java.util.Stack;
  * https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/
  */
 public class Solution0094 {
-    static TreeNode nodeDemo = new TreeNode(3, new TreeNode(9), new TreeNode(20));
+    static TreeNode nodeDemo = new TreeNode(1, new TreeNode(2), new TreeNode(3));
 
     @BeforeClass
     public static void beforeClass() throws Exception {
-        nodeDemo.right.left = new TreeNode(15);
-        nodeDemo.right.right = new TreeNode(7);
+        nodeDemo.left.left = new TreeNode(4);
+        nodeDemo.left.right = new TreeNode(5);
+        nodeDemo.left.right.left = new TreeNode(6);
+        nodeDemo.left.right.right = new TreeNode(7);
     }
 
     /**
@@ -38,16 +40,17 @@ public class Solution0094 {
         if (root == null) {
             return list;
         }
+        TreeNode cur = root;
         Stack<TreeNode> stack = new Stack<>();
-        while (!stack.isEmpty() || root != null) {
-            while (root != null) {
-                stack.push(root);
-                root = root.left;
+        while (!stack.isEmpty() || cur != null) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
             }
             TreeNode node = stack.pop();
             list.add(node.val);
             if (node.right != null) {
-                root = node.right;
+                cur = node.right;
             }
         }
         return list;
