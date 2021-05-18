@@ -70,4 +70,42 @@ public class Solution0002 {
 //        tmp += (a == 0 ? 0 : 1) + b == 0 ? 0 : 1;//tmp=1
         System.out.println("tmp = " + tmp);
     }
+
+    @Test
+    public void oN2() {
+        ListNode result = addTwoNumbers2(list, list2);
+        result.printSingleLinkedList();
+    }
+
+    /**
+     * 同1，只不过更好理解
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        int carry = 0;//用于存储想加的临时值
+
+        while (p1 != null || p2 != null) {
+            int sum = (p1 == null ? 0 : p1.value) + (p2 == null ? 0 : p2.value);
+            p.next = new ListNode((sum + carry) % 10);//算余数，(sum + carry)这个是重点
+            carry = (sum + carry) / 10;//算进位，(sum + carry)也是重点
+            if (p1 != null) {
+                p1 = p1.next;
+            }
+            if (p2 != null) {
+                p2 = p2.next;
+            }
+            p = p.next;
+        }
+        if (carry > 0) {
+            p.next = new ListNode(1);
+        }
+        return dummy.next;
+    }
 }
