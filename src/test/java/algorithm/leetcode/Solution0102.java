@@ -55,4 +55,32 @@ public class Solution0102 {
         }
         return result;
     }
+
+    @Test
+    public void levelOrder2Test() {
+        levelOrder2(nodeDemo);
+    }
+
+    /**
+     * 层序遍历
+     *
+     * @param root
+     */
+    private void levelOrder2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            System.out.println(node.val);
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+    }
 }
