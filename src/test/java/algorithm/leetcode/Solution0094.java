@@ -55,4 +55,31 @@ public class Solution0094 {
         }
         return list;
     }
+
+    @Test
+    public void in2() {
+        List<Integer> result = inorderTraversal2(nodeDemo);
+        System.out.println(result);//expect:[4, 2, 6, 5, 7, 1, 3]
+    }
+
+    private List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;//这个cur用于指向方向
+        while (!stack.isEmpty() || cur != null) {
+            while (cur != null) {//左孩子尽可能入栈
+                stack.push(cur);
+                cur = cur.left;
+            }
+            TreeNode node = stack.pop();
+            list.add(node.val);
+            if (node.right != null) {
+                cur = node.right;
+            }
+        }
+        return list;
+    }
 }
