@@ -5,7 +5,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @author: sun.yukun@foxmail.com
@@ -26,7 +28,7 @@ public class Solution0199 {
     }
 
     /**
-     * 一棵二叉树的左视图/右视图
+     * 一棵二叉树的左视图/右视图，垃圾解法，太啰嗦
      */
     @Test
     public void rightView() {
@@ -89,5 +91,39 @@ public class Solution0199 {
         depth++;
         dfs(root.right, depth);
         dfs(root.left, depth);
+    }
+
+
+    @Test
+    public void printRight2Test() {
+        printRight2(nodeDemo);
+    }
+
+    /**
+     * bfs，推荐写法
+     *
+     * @param root
+     */
+    public void printRight2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int levelNum = queue.size();
+            for (int i = 0; i < levelNum; i++) {//每一层一层的去poll
+                TreeNode node = queue.poll();//可能是受三序遍历的影响，老是写到for外面，其实应该写到里面
+                if (i == (levelNum - 1)) {//这个非常巧妙
+                    System.out.println(node.val);
+                }
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+        }
     }
 }
