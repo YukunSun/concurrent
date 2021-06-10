@@ -61,6 +61,7 @@ public class ForkJoinTest {
         ForkJoinPool pool = new ForkJoinPool();
         DemoAction action = new DemoAction(1, 1000);
         pool.submit(action);
+        System.out.println(action.isCompletedAbnormally());//ForkJoinTask 在执行的时候可能会抛出异常，但是我们没办法在主线程里直接捕获异常，所以 ForkJoinTask 提供了 isCompletedAbnormally() 方法来检查任务是否已经抛出异常或已经被取消了，并且可以通过 ForkJoinTask 的 getException 方法获取异常。
     }
 
     /**
