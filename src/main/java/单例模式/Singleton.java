@@ -6,6 +6,8 @@ package 单例模式;
  * 2 不能被 create、不能被赋值
  * 3 缓存
  * 4 线程安全：https://cloud.tencent.com/developer/article/2071666
+ * 4.1 线程安全：虚拟机会保证一个类的()方法在多线程环境中被正确地加锁、同步，如果多个线程同时去初始化一个类，那么只会有一个线程去执行这个类的()方法，其他线程都需要阻塞等待，直到活动线程执行()方法完毕
+ * 5 缺点：静态内部类也有着一个致命的缺点，就是传参的问题，由于是静态内部类的形式去创建单例的，故外部无法传递参数进去。
  */
 public class Singleton {
     //private: 不想被创建
@@ -24,7 +26,6 @@ public class Singleton {
 
     //staic: 不是 static 的话，就得通过创建实例来访问
     //final: 能使用 final，但没必要
-    //线程安全：虚拟机会保证一个类的()方法在多线程环境中被正确地加锁、同步，如果多个线程同时去初始化一个类，那么只会有一个线程去执行这个类的()方法，其他线程都需要阻塞等待，直到活动线程执行()方法完毕。
     public static Singleton getInstance() {
         return SingletonHolder.INSTANCE;
     }
